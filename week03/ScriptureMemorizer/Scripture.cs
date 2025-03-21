@@ -18,7 +18,7 @@ class Scripture
         var visibleWords = Words.Where(word => !word.Hidden).ToList();
 
         if (visibleWords.Count == 0)
-            return false; // Todas as palavras já estão ocultas
+            return false; 
 
         var random = new Random();
         foreach (var word in visibleWords.OrderBy(_ => random.Next()).Take(count))
@@ -26,7 +26,7 @@ class Scripture
             word.Hide();
         }
 
-        return true; // Ainda há palavras para esconder
+        return true; 
     }
 
     public override string ToString()
