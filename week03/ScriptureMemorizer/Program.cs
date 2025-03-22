@@ -20,8 +20,10 @@ class Program
     static void ClearScreen()
     {
         Console.Clear();
+        
     }
 
+    // Carregar as escrituras de um arquivo de texto
     static List<Scripture> LoadScriptures(string filePath)
     {
         var scriptures = new List<Scripture>();
@@ -49,29 +51,34 @@ class Program
         return scriptures;
     }
 
-    static void Main()
+static void Main()
+{
+    var scriptures = LoadScriptures("scriptures.txt");
+    var random = new Random();
+    var scripture = scriptures[random.Next(scriptures.Count)];
+    
+    // Salva a versão completa da escritura
+    var old = scripture.ToString();
+
+    while (true)
     {
-        var scriptures = LoadScriptures("scriptures.txt");
-        var random = new Random();
-        var scripture = scriptures[random.Next(scriptures.Count)];
-
-        while (true)
-        {
-            ClearScreen();
-            Console.WriteLine(scripture);
-
-            Console.Write("\nHint: Focus on the first few words. Press Enter to continue or type 'quit' to exit: ");
-            string input = Console.ReadLine().Trim().ToLower();
-
-            if (input == "quit")
-                break;
-
-            if (!scripture.HideRandomWords())
-                break;
-        }
-
         ClearScreen();
-        Console.WriteLine(scripture);
-        Console.WriteLine("\nAll words are hidden. Program ended.");
+        Console.WriteLine(scripture); // Exibe a escritura com ou sem palavras ocultas
+        Console.Write("\nHint: Focus on the first few words. Press Enter to continue or type 'quit' to exit: ");
+        string input = Console.ReadLine().Trim().ToLower();
+
+        if (input == "quit")
+            break;
+
+        // Chama HideRandomWords e continua ocultando palavras
+        if (!scripture.HideRandomWords())
+            break;
     }
+
+    ClearScreen();
+    Console.WriteLine(old); // Exibe a escritura completa no final
+    Console.WriteLine("\nAll words are hidden. Program ended.");
 }
+
+}
+
