@@ -5,7 +5,6 @@
     Exceeds requirements by adding:
     A library of scriptures (chooses randomly).
     Loads scriptures from a text file.
-    Provides a hint before hiding words.
     Ensures only visible words are hidden.
     Created for enhanced scripture learning experience.
 */
