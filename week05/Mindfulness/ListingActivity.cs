@@ -1,6 +1,6 @@
 class ListingActivity : Activity
 {
-    private List<string> _prompts;
+    private List<string> _prompts; 
 
     public ListingActivity() 
         : base("Listing", "This activity will help you focus on the good things in your life by listing them.") 
@@ -26,8 +26,7 @@ class ListingActivity : Activity
         Console.WriteLine($"\n{prompt}");
         Console.WriteLine("Start listing your items:");
 
-        
-        DateTime startTime = DateTime.Now;
+        DateTime startTime = DateTime.Now; 
         DateTime endTime = startTime.AddSeconds(_duration);
         int count = 0;
 
@@ -47,8 +46,8 @@ class ListingActivity : Activity
 
     private string GetRandomPrompt()
     {
-        Random random = new Random();
-        int index = random.Next(_prompts.Count);
+        Random randomGenerator = new Random(); 
+        int index = randomGenerator.Next(_prompts.Count);
         return _prompts[index];
     }
 }
